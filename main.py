@@ -19,6 +19,7 @@ def main():
 
             print(G)
             print(dijkistra.dijkstra(G, origem, destino))
+            f.close()
     except:
         print('Não foi posível ler o arquivo, tente novamente.')
 
