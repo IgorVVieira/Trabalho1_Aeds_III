@@ -1,4 +1,6 @@
-import dijkistra
+import dijkstra
+import bellmanFord
+import floydWarshall
 
 
 def main():
@@ -10,14 +12,14 @@ def main():
 
         algoritmo = int(
             input('Algoritmo:\n \t1 Dijkstra \n \t2 Bellman-Ford \n \t3- Floyd-Warshal\n'))
-        ler_arquivo(file, origem, destino)
+        lerArquivo(file, origem, destino, algoritmo)
     except:
         print('Por favor, insira um número inteiro. Tente novamente!')
 
     # aux = grafo[s:destino]
 
 
-def ler_arquivo(file, origem, destino):
+def lerArquivo(file, origem, destino, algoritmo):
     try:
         with open(file, "r") as f:
             header = f.readline().split()
@@ -29,7 +31,14 @@ def ler_arquivo(file, origem, destino):
                 valores = (*map(int, line.split()), )
                 G[valores[0]].append(valores[1:])
 
-            print(dijkistra.dijkstra(G, origem, destino))
+            if algoritmo == 1:
+                print(dijkstra.dijkstra(G, origem, destino))
+            elif algoritmo == 2:
+                print(bellmanFord.bellmanFord(G, origem, destino))
+            elif algoritmo == 3:
+                print(floydWarshall.floydWarshall(G, origem, destino))
+            else:
+                print('Algoritmo inválido selecionado, tente novamente!')
             f.close()
     except:
         print('Não foi posível ler o arquivo, tente novamente.')
