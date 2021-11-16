@@ -7,6 +7,18 @@ def main():
         # ./Datasets/toy.txt
         origem = int(input('Origem: '))
         destino = int(input('Destino: '))
+
+        algoritmo = int(
+            input('Algoritmo:\n \t1 Dijkstra \n \t2 Bellman-Ford \n \t3- Floyd-Warshal\n'))
+        ler_arquivo(file, origem, destino)
+    except:
+        print('Por favor, insira um número inteiro. Tente novamente!')
+
+    # aux = grafo[s:destino]
+
+
+def ler_arquivo(file, origem, destino):
+    try:
         with open(file, "r") as f:
             header = f.readline().split()
             G = [[] for _ in range(int(header[0]))]  # Tamanho do grafo
@@ -17,7 +29,6 @@ def main():
                 valores = (*map(int, line.split()), )
                 G[valores[0]].append(valores[1:])
 
-            print(G)
             print(dijkistra.dijkstra(G, origem, destino))
             f.close()
     except:

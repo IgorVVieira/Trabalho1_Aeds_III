@@ -32,7 +32,7 @@ def dijkstra(grafo, s, destino):
                 pred[v[0]] = u
             i += 1
 
-    return dist, pred
+    return dist[destino]
 
 
 def buscaMenor(lista, excluidos):
