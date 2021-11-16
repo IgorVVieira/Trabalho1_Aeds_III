@@ -1,3 +1,4 @@
+import timeit
 import dijkstra
 import bellmanFord
 import floydWarshall
@@ -32,14 +33,28 @@ def lerArquivo(file, origem, destino, algoritmo):
                 G[valores[0]].append(valores[1:])
 
             if algoritmo == 1:
+                inicio = timeit.default_timer()
                 print(dijkstra.dijkstra(G, origem, destino))
+
+                fim = timeit.default_timer()
+                print('Tempo: %.3f s' % (fim - inicio))
             elif algoritmo == 2:
+                inicio = timeit.default_timer()
                 print(bellmanFord.bellmanFord(G, origem, destino))
+
+                fim = timeit.default_timer()
+                print('Tempo: %.3f s' % (fim - inicio))
             elif algoritmo == 3:
+                inicio = timeit.default_timer()
+
                 print(floydWarshall.floydWarshall(G, origem, destino))
+                fim = timeit.default_timer()
+                print('Tempo: %.3f s' % (fim - inicio))
             else:
                 print('Algoritmo inválido selecionado, tente novamente!')
+                quit()  # Finaliza execução caso não encontre o algoritmo
             f.close()
+        return
     except:
         print('Não foi posível ler o arquivo, tente novamente.')
 
