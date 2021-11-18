@@ -1,4 +1,5 @@
 import math
+from getCaminho import caminho
 
 
 def dijkstra(grafo, s, destino):
@@ -32,7 +33,9 @@ def dijkstra(grafo, s, destino):
                 pred[v[0]] = u
             i += 1
 
-    return dist[destino]
+    custo = dist[destino]
+
+    return caminho(pred, s, destino), custo
 
 
 def buscaMenor(lista, excluidos):

@@ -1,4 +1,5 @@
 import math
+from getCaminho import caminho
 
 
 def bellmanFord(grafo, s, destino):
@@ -20,7 +21,7 @@ def bellmanFord(grafo, s, destino):
 
     print("Algoritmo de Bellman-Ford")
     print("Origem: ", s)
-    print("Destino: ", len(grafo) - 1)
+    print("Destino: ", destino)
     print("Processando...")
 
     while b <= len(grafo):
@@ -42,4 +43,4 @@ def bellmanFord(grafo, s, destino):
         if trocou == False:
             break
 
-    return dist
+    return caminho(pred, s, destino), dist[destino]

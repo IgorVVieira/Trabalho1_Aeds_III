@@ -1,4 +1,5 @@
 import math
+from getCaminho import caminho
 
 
 def floydWarshall(grafo, s, destino):
@@ -22,7 +23,7 @@ def floydWarshall(grafo, s, destino):
         i += 1
 
     print("Algoritmo de Floyd-Warshall")
-    print("Origem: 0")
+    print("Origem: ", s)
     print("Destino: ", destino)
     print("Processando...")
 
