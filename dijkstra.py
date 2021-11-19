@@ -7,13 +7,14 @@ def dijkstra(graph, s, destino):
     pred = []
     Q = []
     i = 0
-    excluidos = []
-    aux = graph
+    excluidos = []  # vertices n processados
+    graphAux = graph
 
+    # Inicializa dist com infinito e prev com null ou None, pois conhecemos 0 caminhos
     for v in graph:
         dist.append(math.inf)
         pred.append(None)
-        Q.append(i)
+        Q.append(i)  # lista de vértices processados
         i += 1
 
     dist[s] = 0
@@ -23,14 +24,16 @@ def dijkstra(graph, s, destino):
     print("Processando...")
 
     for q in Q:
-        menor, posicao = getMenor(dist, excluidos)
-        excluidos.append(posicao)
+        # Busco menor distância dentre os elementos de Q
+        u = getMenor(dist, excluidos)
+        excluidos.append(u)
         i = 0
 
-        for v in aux[posicao]:
-            if dist[v[0]] > dist[posicao] + v[1]:
-                dist[v[0]] = dist[posicao] + v[1]
-                pred[v[0]] = posicao
+        for v in graphAux[u]:
+            if dist[v[0]] > dist[u] + v[1]:
+                # Se é vdd tenho um novo melhor caminho a partir de u
+                dist[v[0]] = dist[u] + v[1]
+                pred[v[0]] = u
             i += 1
 
     return caminho(pred, s, destino), dist[destino]
@@ -50,4 +53,4 @@ def getMenor(lista, excluidos):
             posicao = i
         i += 1
 
-    return menor, posicao
+    return posicao
