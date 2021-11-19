@@ -31,7 +31,7 @@ def dijkstra(graph, s, destino):
 
         for v in graphAux[u]:
             if dist[v[0]] > dist[u] + v[1]:
-                # Se é vdd tenho um novo melhor caminho a partir de u
+                # Se é vdd tenho um novo melhor caminho a partir de u e atualizamos dist e prev
                 dist[v[0]] = dist[u] + v[1]
                 pred[v[0]] = u
             i += 1

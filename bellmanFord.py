@@ -9,10 +9,11 @@ def bellmanFord(graph, s, destino):
     i = 0
     j = 0
 
+    # Inicializa dist com infinito e prev com null ou None, pois conhecemos 0 caminhos
     for v in graph:
         dist.append(math.inf)
         pred.append(None)
-        Q.append(i)
+        Q.append(i) # lista de vértices processados
         i += 1
 
     dist[s] = 0
@@ -30,11 +31,14 @@ def bellmanFord(graph, s, destino):
         for q in Q:
             j = 1
             for u in graph[i]:
+                # Examinamos cada aresta
                 adjacente = u[0]
+                # caso tenha melhor caminho atualizamos dist e prev
                 if dist[adjacente] > dist[i] + u[1]:
                     dist[adjacente] = dist[i] + u[1]
                     pred[adjacente] = i
                 trocou = True
+                # Caso tenha atualização continuo execução, se n n preciso verificar arestas novamente
                 j += 1
             i += 1
         b += 1

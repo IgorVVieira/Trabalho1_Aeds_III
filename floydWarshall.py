@@ -1,12 +1,13 @@
 import math
 from getCaminho import caminho
 
-
+# Calcula os caminhos mínimos para todos pares de vértice desse grafo
 def floydWarshall(graph, s, destino):
     i, j, k = 0, 0, 0
     dist = []
     pred = []
 
+    # Preenche matriz de dist e prev
     while i < len(graph):
         j = 0
         dist.append([])
@@ -38,6 +39,7 @@ def floydWarshall(graph, s, destino):
             j = 0
             while j < len(graph):
                 if dist[i][j] > dist[i][k] + dist[k][j]:
+                    # Se é vdd, descobrimos um novo caminho de i a j passando por k
                     dist[i][j] = dist[i][k] + dist[k][j]
                     pred[i][j] = pred[k][j]
                 j += 1
