@@ -2,18 +2,16 @@ import math
 from getCaminho import caminho
 
 
-def floydWarshall(grafo, s, destino):
-    i = 0
-    j = 0
-    k = 0
+def floydWarshall(graph, s, destino):
+    i, j, k = 0, 0, 0
     dist = []
     pred = []
 
-    while i < len(grafo):
+    while i < len(graph):
         j = 0
         dist.append([])
         pred.append([])
-        while j < len(grafo):
+        while j < len(graph):
             if i == j:
                 dist[i].append(0)
             else:
@@ -28,17 +26,17 @@ def floydWarshall(grafo, s, destino):
     print("Processando...")
 
     i = 0
-    for vert in grafo:
+    for vert in graph:
         for aresta in vert:
             dist[i][aresta[0]] = aresta[1]
             pred[i][aresta[0]] = i
         i += 1
 
-    while k < len(grafo):
+    while k < len(graph):
         i = 0
-        while i < len(grafo):
+        while i < len(graph):
             j = 0
-            while j < len(grafo):
+            while j < len(graph):
                 if dist[i][j] > dist[i][k] + dist[k][j]:
                     dist[i][j] = dist[i][k] + dist[k][j]
                     pred[i][j] = pred[k][j]
@@ -46,4 +44,4 @@ def floydWarshall(grafo, s, destino):
             i += 1
         k += 1
 
-    return dist
+    return 0, dist

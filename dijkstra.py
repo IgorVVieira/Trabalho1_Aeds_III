@@ -2,15 +2,15 @@ import math
 from getCaminho import caminho
 
 
-def dijkstra(grafo, s, destino):
+def dijkstra(graph, s, destino):
     dist = []
     pred = []
     Q = []
     i = 0
     excluidos = []
-    aux = grafo
+    aux = graph
 
-    for v in grafo:
+    for v in graph:
         dist.append(math.inf)
         pred.append(None)
         Q.append(i)
@@ -23,24 +23,22 @@ def dijkstra(grafo, s, destino):
     print("Processando...")
 
     for q in Q:
-        menor, u = buscaMenor(dist, excluidos)
+        menor, posicao = getMenor(dist, excluidos)
         excluidos.append(u)
         i = 0
 
-        for v in aux[u]:
-            if dist[v[0]] > dist[u] + v[1]:
-                dist[v[0]] = dist[u] + v[1]
-                pred[v[0]] = u
+        for v in aux[posicao]:
+            if dist[v[0]] > dist[posicao] + v[1]:
+                dist[v[0]] = dist[posicao] + v[1]
+                pred[v[0]] = posicao
             i += 1
 
-    custo = dist[destino]
-
-    return caminho(pred, s, destino), custo
+    return caminho(pred, s, destino), dist[destino]
 
 
-def buscaMenor(lista, excluidos):
+def getMenor(lista, excluidos):
     menor = math.inf
-    pos = 0
+    posicao = 0
     i = 0
 
     while i < len(lista):
@@ -49,7 +47,7 @@ def buscaMenor(lista, excluidos):
             continue
         if lista[i] < menor:
             menor = lista[i]
-            pos = i
+            posicao = i
         i += 1
 
-    return menor, pos
+    return menor, posicao

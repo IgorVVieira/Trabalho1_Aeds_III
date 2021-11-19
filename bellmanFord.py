@@ -2,14 +2,14 @@ import math
 from getCaminho import caminho
 
 
-def bellmanFord(grafo, s, destino):
+def bellmanFord(graph, s, destino):
     dist = []
     pred = []
     Q = []
     i = 0
     j = 0
 
-    for v in grafo:
+    for v in graph:
         dist.append(math.inf)
         pred.append(None)
         Q.append(i)
@@ -24,13 +24,12 @@ def bellmanFord(grafo, s, destino):
     print("Destino: ", destino)
     print("Processando...")
 
-    while b <= len(grafo):
+    while b <= len(graph):
         trocou = False
         i = 0
         for q in Q:
             j = 1
-
-            for u in grafo[i]:
+            for u in graph[i]:
                 adjacente = u[0]
                 if dist[adjacente] > dist[i] + u[1]:
                     dist[adjacente] = dist[i] + u[1]
