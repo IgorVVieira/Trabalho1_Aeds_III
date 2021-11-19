@@ -26,8 +26,8 @@ def floydWarshall(graph, s, destino):
     print("Processando...")
 
     i = 0
-    for vert in graph:
-        for aresta in vert:
+    for vertice in graph:
+        for aresta in vertice:
             dist[i][aresta[0]] = aresta[1]
             pred[i][aresta[0]] = i
         i += 1
@@ -44,4 +44,5 @@ def floydWarshall(graph, s, destino):
             i += 1
         k += 1
 
-    return 0, dist
+    return 0, dist[s][destino]
+    # retorna dessa forma pois é um array, o s é a primeira posição do array e destino é onde queremos chegar

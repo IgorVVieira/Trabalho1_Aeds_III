@@ -24,7 +24,7 @@ def dijkstra(graph, s, destino):
 
     for q in Q:
         menor, posicao = getMenor(dist, excluidos)
-        excluidos.append(u)
+        excluidos.append(posicao)
         i = 0
 
         for v in aux[posicao]:
