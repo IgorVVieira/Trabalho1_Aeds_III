@@ -1,10 +1,9 @@
 def caminho(pred, s, destino):
     caminho = []
-    destinoAuxiliar = destino
 
-    while destinoAuxiliar and destinoAuxiliar != s:
-        caminho.append(destinoAuxiliar)
-        destinoAuxiliar = pred[destinoAuxiliar]
+    while destino and destino != s:
+        caminho.append(destino)
+        destino = pred[destino]
 
     caminho.append(s)
     caminho.reverse()

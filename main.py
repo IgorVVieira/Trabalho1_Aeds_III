@@ -3,6 +3,7 @@ from dijkstra import dijkstra
 from bellmanFord import bellmanFord
 from floydWarshall import floydWarshall
 
+# [[(1, 6), (2, 2)], [(3, 1), (4, 3)], [(1, 2), (3, 5)], [(4, 3)], []]
 
 def main():
     try:
